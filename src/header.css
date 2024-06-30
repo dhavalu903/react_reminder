@@ -1,0 +1,20 @@
+.header_nav_class {
+    background: #8A2BE2; /* Dark purple to light purple gradient */
+    /* padding: 20px; */
+    display: flex;
+    align-items: center;
+    height: 60px; /* You can adjust this height as needed */
+}
+
+.header_nav_class ul {
+    list-style-type: none;
+    display: flex; /* Use flex to make the ul items display inline */
+    margin: 0; /* Remove default margin */
+    padding: 0; /* Remove default padding */
+}
+
+.header_nav_class ul li {
+    margin-left: 10px;
+    font-weight: bold;
+    color: #FFFFFF;
+}

@@ -1,0 +1,20 @@
+/* Custom styles for the login form */
+.login_form {
+    max-width: 400px; /* Maximum width of the form */
+}
+
+.btn-gradient {
+    background: linear-gradient(to right, #8A2BE2, #D8BFD8); /* Purple to light purple gradient */
+    color: #FFFFFF; /* White text color */
+    border: none; /* Remove default border */
+    font-weight: bold; /* Bold text */
+    font-size: 16px; /* Larger font size */
+}
+
+.btn-gradient:hover {
+    background: linear-gradient(to right, #8A2BE2, #7A1B9A); /* Darker purple gradient on hover */
+}
+
+.btn-gradient:active {
+    background: linear-gradient(to right, #8A2BE2, #6A0D8A); /* Even darker gradient on click */
+}

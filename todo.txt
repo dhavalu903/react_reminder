@@ -1,0 +1,19 @@
+React js work 
+
+git repo - done
+header - done 
+footer - Pending
+Register Page - Pending
+login page design  with api - WIP 
+Profile after login - 
+logout - 
+change password - 
+- customer list - 
+- add customer - 
+- edit and delete customer - 
+- reminder list 
+- savings list 
+- add savings 
+- add extra month if 12 completed 
+- show reports 
+- 
