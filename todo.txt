@@ -4,7 +4,7 @@ git repo - done
 header - done 
 footer - Pending
 Register Page - Pending
-login page design  with api - WIP 
+login page design  with api - done 
 Profile after login - 
 logout - 
 change password - 
