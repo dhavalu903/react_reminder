@@ -1,43 +1,59 @@
-import React,{useState} from 'react';
-import {useNavigate} from 'react-router-dom'
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'
 import './login.css';
+import Loader from './Loader';
+import { API_URL } from './constant';
 
 function Login() {
 
-    const [mobile,setMobile] = useState("");
-    const [password,setPassword] = useState("");
-    const [error,setError] = useState("");
+    const [mobile, setMobile] = useState("");
+    const [password, setPassword] = useState("");
+    const [error, setError] = useState("");
+    const [loading, setLoading] = useState(false)
 
     const navigate = useNavigate()
 
-    const handleSubmit = async (e)=>{
+    const handleSubmit = async (e) => {
         e.preventDefault();
+        setLoading(true)
 
-        const response = await fetch("http://localhost:5000/api/login",{
-            method:"POST",
-            headers:{
-                'Content-type':'application/json'
-            },
-            body:JSON.stringify({mobile,password})
-        })
+        try {
 
-        const data = await response.json()
-        // console.log(response.status)
-        // console.log(data.data)
+            const response = await fetch(`${API_URL}login`, {
+                method: "POST",
+                headers: {
+                    'Content-type': 'application/json'
+                },
+                body: JSON.stringify({ mobile, password })
+            })
 
-        if(response.status=="200"){
-            localStorage.setItem("token",data.data.token)
-            navigate("/dashboard")
-            window.dispatchEvent(new Event('storage'));
+            const data = await response.json()
+            // console.log(response.status)
+            // console.log(data.data)
+
+            if (response.status == "200") {
+                localStorage.setItem("token", data.data.token)
+                navigate("/dashboard")
+                window.dispatchEvent(new Event('storage'));
+                
+            }
+            else {
+                setError(data.error)
+                setLoading(false);
+            }
         }
-        else{
-            setError(data.error)
-            alert(data.error)
+        catch(error)
+        {
+            console.log(error)
+            setError(error)
+            setLoading(false);
         }
     }
 
     return (
+        
         <div className="container">
+            {loading && <Loader />}
             <div className="login_form bg-light shadow rounded p-4 mx-auto mt-5">
                 <h2 className="text-center mb-4 text-dark">Login</h2>
                 <form onSubmit={handleSubmit}>
@@ -48,7 +64,7 @@ function Login() {
                             id="mobile"
                             className="form-control"
                             placeholder="Enter your mobile"
-                            onChange={(e)=>setMobile(e.target.value)}
+                            onChange={(e) => setMobile(e.target.value)}
                         />
                     </div>
 
@@ -59,7 +75,7 @@ function Login() {
                             id="password"
                             className="form-control"
                             placeholder="Enter your password"
-                            onChange={(e)=>setPassword(e.target.value)}
+                            onChange={(e) => setPassword(e.target.value)}
                         />
                     </div>
 

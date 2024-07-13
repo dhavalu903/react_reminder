@@ -2,6 +2,7 @@ React js work
 
 git repo - done
 header - done 
+loader - done
 footer - Pending
 Register Page - Pending
 login page design  with api - done 
